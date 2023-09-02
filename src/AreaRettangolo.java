@@ -12,6 +12,7 @@ public class AreaRettangolo {
 
         System.out.println("Il perimetro è: " + perimetro + "cm");
         System.out.println("L'area è: " + area + "cmq");
+        scanner.close();
 
     }
 }
