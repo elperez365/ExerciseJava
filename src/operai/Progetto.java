@@ -6,7 +6,7 @@ public class Progetto {
 
 	private String nome;
 	private int budget;
-	private String citt�;
+	private String città;
 	private List<Impiegato> partecipanti;
 
 	public Progetto(String nome) {
@@ -29,14 +29,12 @@ public class Progetto {
 		this.budget = budget;
 	}
 
-	public String getCitt�()
-	{
-		return citt�;
+	public String getCittà() {
+		return città;
 	}
 
-	public void setCitt�(String citt�)
-	{
-		this.citt� = citt�;
+	public void setCittà(String città) {
+		this.città = città;
 	}
 
 	public List<Impiegato> getPartecipanti() {
