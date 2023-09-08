@@ -1,9 +1,17 @@
 package Telefonate;
 
 public class Telefonata {
+
 	private int numero;
-	private int durata;
 	private int costo;
+	private int durata;
+
+	public Telefonata(int numero, int costo, int durata) {
+		super();
+		this.numero = numero;
+		this.costo = costo;
+		this.durata = durata;
+	}
 
 	public int getNumero() {
 		return numero;
@@ -13,20 +21,20 @@ public class Telefonata {
 		this.numero = numero;
 	}
 
-	public int getDurata() {
-		return durata;
-	}
-
-	public void setDurata(int durata) {
-		this.durata = durata;
-	}
-
 	public int getCosto() {
 		return costo;
 	}
 
 	public void setCosto(int costo) {
 		this.costo = costo;
+	}
+
+	public int getDurata() {
+		return durata;
+	}
+
+	public void setDurata(int durata) {
+		this.durata = durata;
 	}
 
 }

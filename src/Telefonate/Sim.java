@@ -1,67 +1,74 @@
 package Telefonate;
 
 public class Sim {
-
-	private int numeroSim;
+	private int numero;
 	private int importo;
 
-	Telefonata[] telefonateFatte = new Telefonata[10];
-	Telefonata[] telefonateRicevute = new Telefonata[10];
+	private Telefonata[] elencoTelefonateFatte = new Telefonata[10];
+	private Telefonata[] elencoTelefonateRicevute = new Telefonata[10];
 
-	public void costoTotaleTelefonate() {
+	public void aggiungiTelefonataFatta(Telefonata t) {
+
+		// traslare verso destra
+		for (int i = elencoTelefonateFatte.length - 1; i >= 1; i--) {
+
+			elencoTelefonateFatte[i] = elencoTelefonateFatte[i - 1];
+
+		}
+
+		elencoTelefonateFatte[0] = t;
+
+	}
+
+	public void aggiungiTelefonataRicevuta(Telefonata t) {
+
+		// traslare verso destra
+		for (int i = elencoTelefonateRicevute.length - 1; i >= 1; i--) {
+
+			elencoTelefonateRicevute[i] = elencoTelefonateRicevute[i - 1];
+
+		}
+
+		elencoTelefonateRicevute[0] = t;
+
+	}
+
+	public int costoTotaleChiamate() {
 		int costoTotale = 0;
-		for (int i = 0; i < telefonateFatte.length; i++) {
-			costoTotale = costoTotale + telefonateFatte[i].getCosto();
+		for (int i = 0; i < elencoTelefonateFatte.length; i++) {
+			if (elencoTelefonateFatte[i] != null)
+				costoTotale = costoTotale + elencoTelefonateFatte[i].getCosto();
 		}
-		System.out.println("costo Totale �:" + costoTotale);
+
+		return costoTotale;
 	}
 
-	public void durataTotaleTelefonate() {
+	public int durataTotaleChiamate() {
 		int durataTotale = 0;
-		for (int i = 0; i < telefonateFatte.length; i++) {
-			durataTotale = durataTotale + telefonateFatte[i].getDurata();
+		for (int i = 0; i < elencoTelefonateFatte.length; i++) {
+			if (elencoTelefonateFatte[i] != null)
+				durataTotale = durataTotale + elencoTelefonateFatte[i].getDurata();
 		}
-		System.out.println("durata Totale �:" + durataTotale);
+
+		for (int i = 0; i < elencoTelefonateRicevute.length; i++) {
+			if (elencoTelefonateRicevute[i] != null)
+				durataTotale = durataTotale + elencoTelefonateRicevute[i].getDurata();
+		}
+
+		return durataTotale;
 	}
 
-	public void aggiungiTelefonataFatta(Telefonata f) {
-		for (int i = 0; i < telefonateFatte.length; i++) {
-			telefonateFatte[i + 1] = telefonateFatte[i];
-		}
-	}
-
-	public void stampaTelefonataFatte() {
-		System.out.println("ELENCO TELEFONATE FATTE");
-		for (int i = 0; i < telefonateFatte.length; i++) {
-			System.out.println(telefonateFatte[i].getNumero());
-		}
-	}
-
-	public void stampaTelefonataRicevute() {
-		System.out.println("ELENCO TELEFONATE RICEVUTE");
-		for (int i = 0; i < telefonateFatte.length; i++) {
-			System.out.println(telefonateFatte[i].getNumero());
+	public void stampaTelefonateFatte() {
+		for (int i = 0; i < elencoTelefonateFatte.length; i++) {
+			if (elencoTelefonateFatte[i] != null)
+				System.out.println(elencoTelefonateFatte[i].getNumero());
 		}
 	}
 
-	public static void main(String[] args) {
-		Telefonata t = new Telefonata();
-		t.setNumero(122);
-		t.setDurata(100);
-		t.setCosto(200);
-
-		Telefonata t1 = new Telefonata();
-		t1.setNumero(122);
-		t1.setDurata(100);
-		t1.setCosto(200);
-
-		Sim s = new Sim();
-		s.aggiungiTelefonataFatta(t);
-		s.aggiungiTelefonataFatta(t1);
-
-		s.stampaTelefonataFatte();
-		s.stampaTelefonataRicevute();
-		s.costoTotaleTelefonate();
-		s.durataTotaleTelefonate();
+	public void stampaTelefonateRicevute() {
+		for (int i = 0; i < elencoTelefonateRicevute.length; i++) {
+			if (elencoTelefonateRicevute[i] != null)
+				System.out.println(elencoTelefonateRicevute[i].getNumero());
+		}
 	}
 }
