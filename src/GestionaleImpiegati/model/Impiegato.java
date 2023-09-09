@@ -7,6 +7,13 @@ public class Impiegato {
 	private String codiceFiscale;
 	private int matricola;
 
+	public Impiegato(String nome, String cognome, String codiceFiscale, int matricola) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
+		this.matricola = matricola;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -37,6 +44,12 @@ public class Impiegato {
 
 	public void setMatricola(int matricola) {
 		this.matricola = matricola;
+	}
+
+	@Override
+	public String toString() {
+		return "Impiegato [nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale + ", matricola="
+				+ matricola + "]";
 	}
 
 }
