@@ -1,7 +1,5 @@
 package Distributore;
 
-import java.util.ArrayList;
-
 public class ProvaDistributore {
     public static void main(String[] args) {
 
@@ -18,6 +16,7 @@ public class ProvaDistributore {
         tessera3.caricaTessera(0.75);
 
         Distributore distributore1 = new Distributore();
+
         distributore1.aggiornaColonna(1, acqua, 40);
         distributore1.aggiornaColonna(2, coca, 1);
         distributore1.aggiornaColonna(3, birra, 50);
@@ -27,13 +26,19 @@ public class ProvaDistributore {
         distributore1.addTesseraInMemoria(tessera2);
         distributore1.addTesseraInMemoria(tessera3);
 
+        System.out.println("provo il metodo getPrice");
+        System.out.println(distributore1.getPrice("B"));
+
+        System.out.println("provo il metodo getName");
+        System.out.println(distributore1.getName("B"));
+
         System.out.println(distributore1.getApprovvigionamento());
 
-        System.out.println();
+        System.out.println("provo il metodo lattineDisponibili");
         System.out.println(distributore1.lattineDisponibili("A"));
-        System.out.println();
+        System.out.println("provo il metodo leggiCredito");
         System.out.println(distributore1.leggiCredito(12));
-        System.out.println();
+        System.out.println("provo il metodo eroga");
         System.out.println(distributore1.eroga("C", 21));
         System.out.println();
         System.out.println("approvvigionamento aggiornato");
