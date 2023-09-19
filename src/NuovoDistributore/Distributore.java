@@ -78,13 +78,14 @@ public class Distributore {
 		try {
 			if (b.getPrezzo() <= t.getCredito()) {
 				t.setCredito(t.getCredito() - b.getPrezzo());
+				c.setNumeroLattine(c.getNumeroLattine() - 1);
 				return c.getNumeroColonna();
 			} else if (b.getPrezzo() > t.getCredito()) {
 				throw new IllegalArgumentException("Credito insufficiente");
 			} else if (c.getNumeroLattine() == 0) {
 				throw new IllegalArgumentException("Lattine esaurite");
 			}
-		} catch (IllegalArgumentException e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return -1;
