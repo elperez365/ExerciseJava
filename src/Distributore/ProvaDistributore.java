@@ -43,5 +43,6 @@ public class ProvaDistributore {
         System.out.println();
         System.out.println("approvvigionamento aggiornato");
         System.out.println(distributore1.getApprovvigionamento());
+
     }
 }
