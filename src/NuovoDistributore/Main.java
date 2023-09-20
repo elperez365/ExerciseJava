@@ -29,18 +29,53 @@ public class Main {
 		d.aggiornaColonna(3, "A3", 50);
 		d.aggiornaColonna(4, "A1", 15);
 
+		System.out.println("nome bevanda a1");
 		System.out.println(d.getName("A1"));
+
+		System.out.println("nome bevanda a2");
 		System.out.println(d.getName("A2"));
+
+		System.out.println("nome bevanda a3");
 		System.out.println(d.getName("A3"));
 
+		System.out.println("prezzo bevanda a1");
 		System.out.println(d.getPrice("A1"));
+
+		System.out.println("prezzo bevanda a2");
 		System.out.println(d.getPrice("A2"));
+
+		System.out.println("prezzo bevanda a3");
 		System.out.println(d.getPrice("A3"));
 
+		System.out.println("lattine disponibili a1");
 		System.out.println(d.lattineDisponibili("A1"));
+
+		System.out.println("lattine disponibili a2");
 		System.out.println(d.lattineDisponibili("A2"));
+
+		System.out.println("lattine disponibili a3");
 		System.out.println(d.lattineDisponibili("A3"));
 
+		System.out.println();
+		System.out.println("credito tessera 1 prima di erogare");
+		System.out.println(d.leggiCredito(1));
+
+		System.out.println();
+		System.out.println("Provo il comado eroga utilizzando il crditio della tessera 1");
+		System.out.println("Il distributore eroga dalla colonna:");
 		System.out.println(d.eroga("A2", 1));
+
+		System.out.println();
+		System.out.println("approvvigionamento aggiornato");
+		System.out.println("lattine disponibili a1");
+		System.out.println(d.lattineDisponibili("A1"));
+		System.out.println("lattine disponibili a2");
+		System.out.println(d.lattineDisponibili("A2"));
+		System.out.println("lattine disponibili a3");
+		System.out.println(d.lattineDisponibili("A3"));
+
+		System.out.println("credito aggiornato tessera 1");
+		System.out.println(d.leggiCredito(1));
+
 	}
 }

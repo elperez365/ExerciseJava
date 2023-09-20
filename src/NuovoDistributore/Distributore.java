@@ -18,7 +18,7 @@ public class Distributore {
 		try {
 			Bevanda b = bevande.get(codice);
 			return b.getPrezzo();
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			return -1;
 		}
 	}
@@ -27,7 +27,7 @@ public class Distributore {
 		try {
 			Bevanda b = bevande.get(codice);
 			return b.getNome();
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}
@@ -40,7 +40,7 @@ public class Distributore {
 		try {
 			Tessera t = tessere.get(codice);
 			return t.getCredito();
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			return -1;
 		}
 	}
@@ -81,9 +81,9 @@ public class Distributore {
 				c.setNumeroLattine(c.getNumeroLattine() - 1);
 				return c.getNumeroColonna();
 			} else if (b.getPrezzo() > t.getCredito()) {
-				throw new IllegalArgumentException("Credito insufficiente");
+				throw new Exception("Credito insufficiente");
 			} else if (c.getNumeroLattine() == 0) {
-				throw new IllegalArgumentException("Lattine esaurite");
+				throw new Exception("Lattine esaurite");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
