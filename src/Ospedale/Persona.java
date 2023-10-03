@@ -13,19 +13,19 @@ public class Persona {
     }
 
     public String getCodiceFiscale() {
-        return codiceFiscale;
+        return this.codiceFiscale;
     }
 
     public String getCognome() {
-        return cognome;
+        return this.cognome;
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public Medico getMedico() {
-        return medico;
+        return this.medico;
     }
 
     public void setMedico(Medico medico) {

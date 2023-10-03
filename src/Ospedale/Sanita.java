@@ -1,13 +1,20 @@
 package Ospedale;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sanita {
+
     List<Paziente> pazienti = new ArrayList<Paziente>();
     List<Medico> medici = new ArrayList<Medico>();
 
-    public void aggiugniPersona(String nome, String cognome, String codiceFiscale) {
+    public void aggiugniPaziente(String nome, String cognome, String codiceFiscale) {
         pazienti.add(new Paziente(nome, cognome, codiceFiscale));
     }
 
@@ -42,10 +49,20 @@ public class Sanita {
         this.getPersona(codiceFiscale).setMedico(this.getMedico(matricola));
     }
 
-    public void caricaDati() {
-        /*
-         * scrivi il codice per caricare i dati dal file "dati.txt" e popolare le liste
-         */
+    public void caricaDati(String path) throws IOException {
+
+        Reader reader = Files.newBufferedReader(Paths.get(path));
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        String line = bufferedReader.readLine();
+        while (line != null) {
+            String[] dati = line.split(";");
+            if (dati[0].equalsIgnoreCase("P")) {
+                this.aggiugniPaziente((String) dati[1], (String) dati[2], (String) dati[3]);
+            } else if (dati[0].equalsIgnoreCase("M")) {
+                this.aggiungiMedico((String) dati[1], (String) dati[2], (String) dati[3], (String) dati[4]);
+            }
+            line = bufferedReader.readLine();
+        }
 
     }
 
