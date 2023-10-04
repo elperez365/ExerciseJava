@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Folder extends File implements FolderInterface {
+public class Folder extends File {
+
+	private ArrayList<File> elencoFiles = new ArrayList<File>();
 
 	public Folder(String name) {
 		super(name, 0);
@@ -12,7 +14,7 @@ public class Folder extends File implements FolderInterface {
 	}
 
 	public ArrayList<File> getElencoFiles() {
-		return elencoFiles;
+		return this.elencoFiles;
 	}
 
 	public File getFile(String name) {
@@ -46,32 +48,19 @@ public class Folder extends File implements FolderInterface {
 		return totalSize;
 	}
 
-	public void addFolder(Folder folder) {
-		try {
-			for (File file : elencoFiles) {
-				if (file.getName().equals(folder.getName())) {
-					throw new FolderAlreadyExistingExeption("Folder already existing");
-				} else {
-					elencoFiles.add(folder);
-				}
-			}
-		} catch (FolderAlreadyExistingExeption e) {
-			System.out.println(e.getMessage());
-		}
-	}
+	public void addFile(File f) throws FileAlreadyExistingExeption {
+		Boolean found = false;
 
-	public void addFile(File f) {
-		try {
-			for (File file : elencoFiles) {
-				if (file.getName().equals(file.getName())) {
-					throw new FileAlreadyExistingExeption("File already existing");
-				} else {
-					file.father = this;
-					elencoFiles.add(file);
-				}
+		for (File file : elencoFiles) {
+			if (file.equals(f)) {
+				found = true;
 			}
-		} catch (FileAlreadyExistingExeption e) {
-			System.out.println(e.getMessage());
+		}
+		if (found == true) {
+			throw new FileAlreadyExistingExeption("File already existing");
+		} else {
+			f.father = this;
+			this.elencoFiles.add(f);
 		}
 	}
 
@@ -88,5 +77,10 @@ public class Folder extends File implements FolderInterface {
 
 	public Folder getFather() {
 		return this.father;
+	}
+
+	@Override
+	public String toString() {
+		return this.name + " " + this.size + " " + this.elencoFiles;
 	}
 }

@@ -10,7 +10,7 @@ public class HardDisk {
 
 	public HardDisk(int size) {
 		this.size = size;
-		elencoFiles.add(new Folder("/"));
+		this.elencoFiles.add(new Folder("/"));
 	}
 
 	public char getDriveLetter() {
@@ -94,8 +94,28 @@ public class HardDisk {
 		return filesSize;
 	}
 
-	public void addFile(File file) {
-		file.setFather(new Folder("/"));
-		elencoFiles.add(file);
+	public void addFile(File f) throws FileAlreadyExistingExeption {
+		Boolean found = false;
+
+		for (File file : elencoFiles) {
+			if (file.equals(f)) {
+				found = true;
+			}
+		}
+		if (found == true) {
+			throw new FileAlreadyExistingExeption("File already existing");
+		} else {
+			f.setFather(new Folder("/"));
+			elencoFiles.add(f);
+		}
+	}
+
+	public ArrayList<File> getAllFiles() {
+		return this.elencoFiles;
+	}
+
+	public String toString() {
+		return "HardDisk [driveLetter=" + driveLetter + ", sizeAvailable=" + this.getSizeAvailable() + ", elencoFiles="
+				+ elencoFiles + "]";
 	}
 }
